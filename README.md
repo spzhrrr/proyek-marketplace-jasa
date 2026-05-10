@@ -1,6 +1,6 @@
-# Marketplace Jasa Backend
+# Marketplace Jasa
 
-Backend ini dibuat untuk kebutuhan aplikasi marketplace jasa berbasis web. Sistem dikembangkan menggunakan Node.js, Express.js, TypeScript, dan MySQL dengan konsep REST API serta layered architecture agar struktur project lebih rapi dan lebih mudah dikembangkan ke depannya.
+Proyek ini dibuat untuk kebutuhan aplikasi marketplace jasa berbasis web. Sistem dikembangkan menggunakan Node.js, Express.js, TypeScript, dan MySQL dengan konsep REST API serta layered architecture agar struktur project lebih rapi dan lebih mudah dikembangkan ke depannya.
 
 Project ini mendukung beberapa fitur utama seperti authentication menggunakan JWT, pengelolaan layanan jasa, booking layanan, sistem review, upload gambar, dan dashboard sederhana untuk kebutuhan analitik.
 
