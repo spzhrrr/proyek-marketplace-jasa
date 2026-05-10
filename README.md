@@ -385,10 +385,7 @@ Dokumentasi endpoint utama telah dituliskan pada bagian Endpoint API untuk mempe
 
 # Conclusion
 
-Proyeksa Marketplace Backend dikembangkan sebagai simulasi backend marketplace jasa dengan penerapan konsep software architecture modern seperti layered architecture, middleware, relational database, authentication, authorization, dan centralized error handling.
+Proyek Marketplace Jasa ini dikembangkan sebagai simulasi backend marketplace jasa dengan penerapan konsep software architecture modern seperti layered architecture, middleware, relational database, authentication, authorization, dan centralized error handling.
 
 Selain fokus pada fitur marketplace, project ini juga menekankan struktur backend yang rapi dan scalable agar lebih mudah dikembangkan pada tahap berikutnya.
 
-Proyeksa Marketplace Backend demonstrates the implementation of scalable backend architecture using modern backend development practices. The system includes authentication, authorization, layered architecture, relational database management, analytics, and workflow-based business logic.
-
-The project was designed to simulate a real-world marketplace backend system while maintaining clean code organization and scalable architecture principles.
