@@ -1,11 +1,10 @@
-```md
 # Marketplace Jasa
 
 Backend ini dibangun untuk mendukung sistem marketplace jasa berbasis web. Dalam sistem ini, user dapat membuat akun, login, membuat layanan jasa, melakukan booking, memberikan review, serta mengelola profil pengguna.
 
 Backend dikembangkan menggunakan Node.js, Express.js, TypeScript, dan MySQL dengan menerapkan layered architecture. Tujuannya agar struktur project lebih rapi dan memudahkan pengembangan di tahap berikutnya.
 
-Fokus utama dari project ini adalah pada proses backend dan penyediaan API. Seluruh fitur utama marketplace diproses melalui REST API yang nantinya dapat dikonsumsi oleh frontend (web maupun mobile).
+Fokus utama dari project ini adalah pada proses backend dan penyediaan API. Seluruh fitur utama marketplace diproses melalui REST API yang nantinya dapat dikonsumsi oleh frontend, baik web maupun mobile.
 
 ---
 
@@ -57,7 +56,7 @@ Fitur yang tersedia pada service:
 - filter by category
 - search service
 
-Setiap service terhubung dengan user yang membuatnya (foreign key terhadap user_id).
+Setiap service terhubung dengan user yang membuatnya melalui foreign key `user_id`.
 
 ---
 
@@ -95,7 +94,7 @@ Backend menyediakan endpoint dashboard sederhana untuk menampilkan:
 - total bookings
 - total reviews
 
-Data dashboard diambil langsung dari database menggunakan query aggregation (COUNT, JOIN, dll).
+Data dashboard diambil langsung dari database menggunakan query aggregation seperti `COUNT`, `JOIN`, dan query statistik lainnya.
 
 ---
 
@@ -133,13 +132,22 @@ Service
 Database
 ```
 
-Penjelasan per layer:
+## Penjelasan Per Layer
 
-* Routes: bertugas mendefinisikan endpoint-endpoint API
-* Middleware: menangani authentication, logging, dan validasi awal
-* Controller: menerima request dari client dan menyusun response
-* Service: berisi business logic dan interaksi dengan database
-* Database: tempat penyimpanan data
+### Routes
+Bertugas mendefinisikan endpoint-endpoint API.
+
+### Middleware
+Menangani authentication, logging, validasi awal, dan pengecekan authorization.
+
+### Controller
+Menerima request dari client dan menyusun response yang akan dikirim kembali.
+
+### Service
+Berisi business logic dan proses interaksi dengan database.
+
+### Database
+Tempat penyimpanan seluruh data aplikasi.
 
 Dengan pendekatan ini, kode menjadi lebih terstruktur dan tidak terjadi pencampuran tanggung jawab antar layer.
 
@@ -191,7 +199,9 @@ Kolom utama:
 - price
 - category
 - image
-- user_id (foreign key ke tabel users)
+- user_id
+
+`user_id` merupakan foreign key yang terhubung ke tabel users.
 
 ---
 
@@ -200,9 +210,15 @@ Kolom utama:
 Menyimpan transaksi booking jasa.
 
 Kolom utama:
-- service_id (foreign key ke tabel services)
-- buyer_id (foreign key ke tabel users)
-- status (pending, accepted, rejected, completed)
+- service_id
+- buyer_id
+- status
+
+Status booking dapat berupa:
+- pending
+- accepted
+- rejected
+- completed
 
 ---
 
@@ -211,16 +227,16 @@ Kolom utama:
 Menyimpan rating dan review dari user.
 
 Kolom utama:
-- rating (1-5)
+- rating
 - comment
-- reviewer_id (foreign key ke tabel users)
-- service_id (foreign key ke tabel services)
+- reviewer_id
+- service_id
 
 ---
 
 # Cara Menjalankan Project
 
-## 1. Clone repository
+## 1. Clone Repository
 
 ```bash
 git clone https://github.com/spzhrrr/proyek-marketplace-jasa.git
@@ -228,7 +244,7 @@ git clone https://github.com/spzhrrr/proyek-marketplace-jasa.git
 
 ---
 
-## 2. Masuk ke direktori backend
+## 2. Masuk ke Direktori Backend
 
 ```bash
 cd backend
@@ -236,7 +252,7 @@ cd backend
 
 ---
 
-## 3. Install dependency
+## 3. Install Dependency
 
 ```bash
 npm install
@@ -244,7 +260,7 @@ npm install
 
 ---
 
-## 4. Buat file .env
+## 4. Buat File `.env`
 
 ```env
 PORT=5000
@@ -259,7 +275,7 @@ DB_NAME=proyeksa_db
 
 ---
 
-## 5. Jalankan server
+## 5. Jalankan Server
 
 ```bash
 npm run dev
@@ -277,43 +293,43 @@ http://localhost:5000
 
 ## User
 
-| Method | Endpoint            |
-| ------ | ------------------- |
-| POST   | /api/users/register |
-| POST   | /api/users/login    |
-| GET    | /api/users/me       |
-| PUT    | /api/users/me       |
+| Method | Endpoint |
+|---|---|
+| POST | /api/users/register |
+| POST | /api/users/login |
+| GET | /api/users/me |
+| PUT | /api/users/me |
 
 ---
 
 ## Services
 
-| Method | Endpoint          |
-| ------ | ----------------- |
-| GET    | /api/services     |
-| GET    | /api/services/:id |
-| POST   | /api/services     |
-| PUT    | /api/services/:id |
+| Method | Endpoint |
+|---|---|
+| GET | /api/services |
+| GET | /api/services/:id |
+| POST | /api/services |
+| PUT | /api/services/:id |
 | DELETE | /api/services/:id |
 
 ---
 
 ## Bookings
 
-| Method | Endpoint                        |
-| ------ | ------------------------------- |
-| POST   | /api/bookings/:serviceId        |
-| GET    | /api/bookings                   |
-| PUT    | /api/bookings/:bookingId/status |
+| Method | Endpoint |
+|---|---|
+| POST | /api/bookings/:serviceId |
+| GET | /api/bookings |
+| PUT | /api/bookings/:bookingId/status |
 
 ---
 
 ## Reviews
 
-| Method | Endpoint                |
-| ------ | ----------------------- |
-| POST   | /api/reviews/:serviceId |
-| GET    | /api/reviews/:serviceId |
+| Method | Endpoint |
+|---|---|
+| POST | /api/reviews/:serviceId |
+| GET | /api/reviews/:serviceId |
 
 ---
 
@@ -324,7 +340,7 @@ Proses login berlangsung sebagai berikut:
 1. Backend memvalidasi email dan password yang dikirim oleh user
 2. Apabila valid, sistem membangkitkan JWT token
 3. Token dikembalikan ke frontend
-4. Frontend menyimpan token (misalnya di localStorage atau httpOnly cookie)
+4. Frontend menyimpan token
 5. Untuk mengakses protected route, frontend menyertakan token dalam header Authorization
 
 Protected route akan memverifikasi token melalui middleware authentication sebelum request diproses lebih lanjut.
@@ -361,16 +377,17 @@ Contoh response error:
 
 Beberapa fitur yang masih dapat dikembangkan lebih lanjut:
 
-* Integrasi payment gateway
-* Real-time chat antara buyer dan seller
-* Notification system (email maupun in-app)
-* Penyimpanan image ke cloud storage (misal: AWS S3 atau Cloudinary)
-* Admin dashboard untuk memoderasi layanan dan user
-* Recommendation system berdasarkan riwayat booking
+- Integrasi payment gateway
+- Real-time chat antara buyer dan seller
+- Notification system
+- Penyimpanan image ke cloud storage
+- Admin dashboard
+- Recommendation system berdasarkan riwayat booking
 
 ---
 
 # Kesimpulan
 
-Project Marketplace Jasa Backend ini merupakan implementasi backend untuk marketplace jasa dengan mencakup authentication, booking system, review system, upload file, serta pengelolaan relational database. Selain berfokus pada kelengkapan fitur, project ini juga menekankan pada struktur backend yang terorganisasi melalui layered architecture agar lebih mudah dikembangkan dan dipelihara pada tahap-tahap selanjutnya.
-```
+Project Marketplace Jasa Backend ini merupakan implementasi backend untuk marketplace jasa dengan mencakup authentication, booking system, review system, upload file, serta pengelolaan relational database.
+
+Selain berfokus pada kelengkapan fitur, project ini juga menekankan struktur backend yang terorganisasi melalui layered architecture agar lebih mudah dikembangkan dan dipelihara pada tahap berikutnya.
