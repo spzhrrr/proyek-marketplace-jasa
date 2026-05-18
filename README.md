@@ -1,9 +1,6 @@
 # Marketplace Jasa
 
-Sistem  ini dibangun untuk mendukung sistem marketplace jasa berbasis web. Dalam sistem ini, user dapat membuat akun, login, membuat layanan jasa, melakukan booking, memberikan review, serta mengelola profil pengguna.
-
-Backend dikembangkan menggunakan Node.js, Express.js, TypeScript, dan MySQL dengan menerapkan layered architecture. Tujuannya agar struktur project lebih rapi dan memudahkan pengembangan di tahap berikutnya.
-
+"Tolongin" dibangun untuk mendukung sistem marketplace jasa berbasis web. Dalam sistem ini, user dapat membuat akun, login, membuat layanan jasa, melakukan booking, memberikan review, serta mengelola profil pengguna. Backend web ini dikembangkan menggunakan Node.js, Express.js, TypeScript, dan MySQL dengan menerapkan layered architecture. Tujuannya agar struktur project lebih rapi dan memudahkan pengembangan di tahap berikutnya.
 Fokus utama dari project ini adalah pada proses backend dan penyediaan API. Seluruh fitur utama marketplace diproses melalui REST API yang nantinya dapat dikonsumsi oleh frontend, baik web maupun mobile.
 
 ---
